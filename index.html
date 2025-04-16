@@ -1,500 +1,116 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CodeWave - платформа для изучения программирования с нуля. Уроки, ресурсы и обзоры языков программирования для начинающих.">
-    <meta name="keywords" content="программирование, уроки, Python, JavaScript, Java, Kotlin, ресурсы для начинающих">
-    <title>Изучаем программирование с нуля</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<!DOCTYPE html>  
+<html lang="ru">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="CodeWave - платформа для изучения программирования с нуля. Уроки, ресурсы и обзоры языков программирования для начинающих.">  
+    <meta name="keywords" content="программирование, уроки, Python, JavaScript, Java, Kotlin, ресурсы для начинающих">  
+    <title>Изучаем программирование с нуля</title>  
+    <link rel="icon" type="image/x-icon" href="favicon.ico">  
+    <style>  
+        /* Reset and base styles */  
+        * {  
+            margin: 0;  
+            padding: 0;  
+            box-sizing: border-box;  
+        }  
         
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
+        body {  
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+            line-height: 1.6;  
+            color: #333;  
+            background-color: #f8f9fa;  
+        }  
         
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a {  
+            text-decoration: none;  
+            color: inherit;  
+        }  
         
-        ul {
-            list-style: none;
-        }
+        ul {  
+            list-style: none;  
+        }  
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container {  
+            width: 100%;  
+            max-width: 1200px;  
+            margin: 0 auto;  
+            padding: 0 20px;  
+        }  
         
-        /* Header styles */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+        /* Header styles */  
+        header {  
+            background-color: #fff;  
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
+            position: sticky;  
+            top: 0;  
+            z-index: 100;  
+        }  
         
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
+        .header-container {  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+            height: 70px;  
+        }  
         
-        .logo-img {
-            max-width: 150px;
-            height: auto;
-            display: block;
-        }
+        .logo-img {  
+            max-width: 150px;  
+            height: auto;  
+            display: block;  
+        }  
         
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-        }
+        .nav-menu {  
+            display: flex;  
+            gap: 30px;  
+        }  
         
-        .nav-link {
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+        .nav-link {  
+            font-size: 0.9rem;  
+            font-weight: 500;  
+            transition: color 0.3s;  
+        }  
         
-        .nav-link:hover {
-            color: #3b82f6;
-        }
+        .nav-link:hover {  
+            color: #3b82f6;  
+        }  
         
-        .header-buttons {
-            display: flex;
-            gap: 10px;
-        }
+        .header-buttons {  
+            display: flex;  
+            gap: 10px;  
+        }  
         
-        .btn {
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-outline {
-            border: 1px solid #3b82f6;
-            color: #3b82f6;
-            background: transparent;
-        }
-        
-        .btn-outline:hover {
-            background-color: rgba(59, 130, 246, 0.1);
-        }
-        
-        .btn-primary {
-            background-color: #3b82f6;
-            color: white;
-            border: none;
-        }
-        
-        .btn-primary:hover {
-            background-color: #2563eb;
-        }
-        
-        /* Hero section */
-        .hero {
-            background: linear-gradient(to right, #3b82f6, #4f46e5);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-        
-        .btn-hero-primary {
-            background-color: white;
-            color: #3b82f6;
-            padding: 12px 24px;
-            font-size: 1rem;
-        }
-        
-        .btn-hero-primary:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .btn-hero-secondary {
-            background-color: transparent;
-            color: white;
-            border: 1px solid white;
-            padding: 12px 24px;
-            font-size: 1rem;
-        }
-        
-        .btn-hero-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Section styles */
-        section {
-            padding: 60px 0;
-        }
-        
-        section h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        /* Languages section */
-        .languages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .language-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .language-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .card-content {
-            padding: 20px;
-        }
-        
-        .card-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        
-        .card-content p {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        
-        .card-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #3b82f6;
-            color: #3b82f6;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        
-        .card-button:hover {
-            background-color: #3b82f6;
-            color: white;
-        }
-        
-        /* Courses section */
-        .courses-section {
-            background-color: #f1f5f9;
-        }
-        
-        /* About section */
-        #about p {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            text-align: center;
-            font-size: 1.1rem;
-            color: #555;
-        }
-        
-        /* Contact section */
-        .contact-form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        textarea.form-input {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #1e293b;
-            color: white;
-            padding: 60px 0 30px;
-            text-align: center;
-        }
-        
-        .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-        
-        .footer-bottom a {
-            color: #3b82f6;
-            transition: color 0.3s;
-        }
-        
-        .footer-bottom a:hover {
-            color: #60a5fa;
-        }
-        
-        /* Scroll to top button */
-        #scrollTopBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: none;
-            transition: background-color 0.3s;
-        }
-        
-        #scrollTopBtn:hover {
-            background-color: #2563eb;
-        }
-        
-        /* Auth message */
-        .auth-message {
-            padding: 20px;
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-        }
-        
-        .auth-message a {
-            color: #3b82f6;
-            text-decoration: underline;
-        }
-        
-        .auth-message a:hover {
-            color: #2563eb;
-        }
-        
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .logo-img {
-                max-width: 120px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-            </a>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link">Главная</a>
-                <a href="intro.html" class="nav-link">Введение</a>
-                <a href="languages.html" class="nav-link">Языки</a>
-                <a href="tutorials.html" class="nav-link">Уроки</a>
-                <a href="resources.html" class="nav-link">Ресурсы</a>
-            </nav>
-            <div class="header-buttons" id="headerButtons"></div>
-        </div>
-    </header>
-
-    <main id="content">
-        <section class="hero">
-            <div class="container">
-                <h1>Изучайте программирование с CodeWave</h1>
-                <p>Погрузитесь в мир кодирования с помощью наших руководств, курсов и ресурсов для начинающих.</p>
-                <div class="hero-buttons">
-                    <a href="languages.html" class="btn btn-hero-primary">Изучить языки</a>
-                    <a href="resources.html" class="btn btn-hero-secondary">Просмотреть ресурсы</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="languages">
-            <div class="container">
-                <h2>Популярные языки программирования</h2>
-                <div class="languages-grid">
-                    <div class="language-card">
-                        <div class="card-content">
-                            <h3>Python</h3>
-                            <p>Известен своей простотой и универсальностью. Отлично подходит для начинающих и для анализа данных.</p>
-                            <a href="languages.html#python" class="card-button">Изучить Python</a>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <div class="card-content">
-                            <h3>JavaScript</h3>
-                            <p>Язык веб-разработки. Создавайте интерактивные веб-сайты и веб-приложения.</p>
-                            <a href="languages.html#javascript" class="card-button">Изучить JavaScript</a>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <div class="card-content">
-                            <h3>Java</h3>
-                            <p>Создавайте надежные, масштабируемые приложения для различных платформ.</p>
-                            <a href="languages.html#java" class="card-button">Изучить Java</a>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <div class="card-content">
-                            <h3>Ruby</h3>
-                            <p>Элегантный синтаксис, ориентированный на простоту и продуктивность.</p>
-                            <a href="languages.html#ruby" class="card-button">Изучить Ruby</a>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <div class="card-content">
-                            <h3>Go</h3>
-                            <p>Разработан для простоты, надежности и эффективности.</p>
-                            <a href="languages.html#go" class="card-button">Изучить Go</a>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <div class="card-content">
-                            <h3>C#</h3>
-                            <p>Универсальный язык для приложений, веб-сервисов и игр.</p>
-                            <a href="languages.html#csharp" class="card-button">Изучить C#</a>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <div class="card-content">
-                            <h3>Swift</h3>
-                            <p>Язык от Apple для iOS и macOS приложений.</p>
-                            <a href="languages.html#swift" class="card-button">Изучить Swift</a>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <div class="card-content">
-                            <h3>Kotlin</h3>
-                            <p>Современный язык для Android-разработки и серверных приложений.</p>
-                            <a href="languages.html#kotlin" class="card-button">Изучить Kotlin</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about">
-            <div class="container">
-                <h2>О нас</h2>
-                <p>Мы — сообщество энтузиастов, стремящихся сделать программирование доступным для всех. Наша цель — предоставить начинающим программистам качественные ресурсы и понятные инструкции, чтобы каждый мог научиться создавать свои программы, веб-сайты или приложения.</p>
-                <p>На сайте вы найдете тщательно отобранные курсы, статьи и советы, которые помогут вам уверенно двигаться вперед. Мы также постоянно обновляем наш контент, добавляя новые языки, такие как Kotlin, и уроки, чтобы вы могли изучать самые актуальные технологии.</p>
-                <p>Присоединяйтесь к нашему сообществу и начните свой путь в программировании уже сегодня!</p>
-            </div>
-        </section>
-
-        <section id="contact" class="courses-section">
-            <div class="container">
-                <h2>Свяжитесь с нами</h2>
-                <p style="text-align: center; margin-bottom: 30px; color: #666;">У вас есть вопросы или отзывы? Мы будем рады услышать от вас!</p>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Имя</label>
-                            <input type="text" id="name" class="form-input" placeholder="Ваше имя">
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" class="form-input" placeholder="ваш.email@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Сообщение</label>
-                            <textarea id="message" class="form-input" placeholder="Ваше сообщение"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить сообщение</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container footer-bottom">
-            <p>© 2025 <a href="[invalid url, do not cite] Все права защищены.</p>
-        </div>
-    </footer>
-
-    <button id="scrollTopBtn" title="Наверх">↑</button>
-
-    <script src="script.js"></script>
-</body>
-</html>
+        .btn {  
+            padding: 8px 16px;  
+            border-radius: 4px;  
+            font-size: 0.9rem;  
+            font-weight: 500;  
+            cursor: pointer;  
+            transition: all 0.3s;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <header>  
+        <div class="header-container">  
+            <img src="logo.png" alt="Logo" class="logo-img"> <!-- Укажите путь к вашему логотипу -->  
+            <nav>  
+                <ul class="nav-menu">  
+                    <li><a href="#" class="nav-link">Главная</a></li>  
+                    <li><a href="#" class="nav-link">Уроки</a></li>  
+                    <li><a href="#" class="nav-link">Ресурсы</a></li>  
+                    <li><a href="#" class="nav-link">Контакты</a></li>  
+                </ul>  
+            </nav>  
+            <div class="header-buttons">  
+                <button class="btn">Регистрация</button>  
+                <button class="btn">Войти</button>  
+            </div>  
+        </div>  
+    </header>  
+    <main class="container">  
+        <h1>Добро пожаловать на CodeWave!</h1>  
+        <p>Это мой сайт на GitHub Pages.</p>  
+    </main>  
+</body>  
+</html>  
