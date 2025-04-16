@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWave - Профиль</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Проверка авторизации -->
+    <script>
+        function checkAuth() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+            if (!isAuthenticated) {
+                window.location.href = 'auth.html';
+            }
+        }
+        checkAuth();
+    </script>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="CodeWave Logo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="intro.html">Введение</a>
+                <a href="languages.html">Языки</a>
+                <a href="tutorials.html">Уроки</a>
+                <a href="resources.html">Ресурсы</a>
+                <a href="forum.html">Форум</a>
+                <a href="profile.html">Профиль</a>
+                <a href="#" class="logout" onclick="logout()">Выйти</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile">
+            <div class="container">
+                <h2>Профиль пользователя</h2>
+                <div class="profile-info">
+                    <h3>Информация о вас</h3>
+                    <p>Имя: ${localStorage.getItem('username')}</p>
+                    <p>Email: ${localStorage.getItem('email')}</p>
+                </div>
+                <div class="visit-history">
+                    <h3>История посещений</h3>
+                    <ul id="historyList">
+                        <!-- История будет добавлена сюда -->
+                    </ul>
+                </div>
+                <div class="favorites">
+                    <h3>Избранные материалы</h3>
+                    <ul id="favoritesList">
+                        <!-- Избранные материалы будут добавлены сюда -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CodeWave. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

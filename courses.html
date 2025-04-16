@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWave - Видеокурсы</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Проверка авторизации -->
+    <script>
+        function checkAuth() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+            if (!isAuthenticated) {
+                window.location.href = 'auth.html';
+            }
+        }
+        checkAuth();
+    </script>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="CodeWave Logo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="intro.html">Введение</a>
+                <a href="languages.html">Языки</a>
+                <a href="tutorials.html">Уроки</a>
+                <a href="resources.html">Ресурсы</a>
+                <a href="forum.html">Форум</a>
+                <a href="courses.html">Курсы</a>
+                <a href="profile.html">Профиль</a>
+                <a href="#" class="logout" onclick="logout()">Выйти</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="courses">
+            <div class="container">
+                <h2>Видеокурсы и вебинары</h2>
+                <div class="course-cards">
+                    <div class="course-card">
+                        <h3>Введение в Python</h3>
+                        <iframe width="100%" height="200px" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+                        <button onclick="registerForCourse('python')">Зарегистрироваться</button>
+                    </div>
+                    <div class="course-card">
+                        <h3>Основы JavaScript</h3>
+                        <iframe width="100%" height="200px" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+                        <button onclick="registerForCourse('javascript')">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CodeWave. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

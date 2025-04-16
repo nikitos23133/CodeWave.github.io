@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWave - Вход/Регистрация</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Стили для формы авторизации */
+        .auth-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #3b82f6, #4f46e5);
+            padding: 20px;
+        }
+
+        .auth-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .auth-form h2 {
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background-color: #2563eb;
+        }
+
+        .auth-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <h2>Вход в аккаунт</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-auth btn-login">Войти</button>
+            </form>
+            <p class="auth-link">Нет аккаунта? <a href="#" onclick="showRegistration()">Зарегистрироваться</a></p>
+        </div>
+    </div>
+
+    <script>
+        function showRegistration() {
+            window.location.href = 'register.html';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Проверка логина и пароля (простая проверка)
+            if (username && password) {
+                // Сохраняем состояние авторизации
+                localStorage.setItem('isAuthenticated', 'true');
+                // Перенаправляем на сайт
+                window.location.href = 'index.html';
+            } else {
+                alert('Пожалуйста, введите логин и пароль');
+            }
+        });
+    </script>
+</body>
+</html>

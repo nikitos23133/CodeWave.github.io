@@ -1,0 +1,21 @@
+<div class="editor-container">
+    <div id="editor"></div>
+    <button onclick="runCode()">Выполнить</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+<script>
+    const editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+
+    function runCode() {
+        const code = editor.getSession().getValue();
+        try {
+            const result = eval(code);
+            alert('Результат: ' + result);
+        } catch (error) {
+            alert('Ошибка: ' + error.message);
+        }
+    }
+</script>

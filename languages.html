@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeWave - обзоры языков программирования: Python, JavaScript, Java, Kotlin и другие. Узнайте особенности и начните учиться.">
+    <meta name="keywords" content="программирование, языки программирования, Python, JavaScript, Kotlin, C#, уроки">
+    <title>Языки программирования</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo-img {
+            max-width: 150px;
+            height: auto;
+            display: block;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline {
+            border: 1px solid #3b82f6;
+            color: #3b82f6;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+        
+        /* Section styles */
+        section {
+            padding: 60px 0;
+        }
+        
+        section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        section h3 {
+            font-size: 1.3rem;
+            margin: 20px 0 10px;
+        }
+        
+        /* Languages section */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .language-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .language-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .card-content p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .card-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #3b82f6;
+            color: #3b82f6;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .card-button:hover {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom a {
+            color: #3b82f6;
+            transition: color 0.3s;
+        }
+        
+        .footer-bottom a:hover {
+            color: #60a5fa;
+        }
+        
+        /* Scroll to top button */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            transition: background-color 0.3s;
+        }
+        
+        #scrollTopBtn:hover {
+            background-color: #2563eb;
+        }
+        
+        /* Auth message */
+        .auth-message {
+            padding: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .auth-message a {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+        
+        .auth-message a:hover {
+            color: #2563eb;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .logo-img {
+                max-width: 120px;
+            }
+            
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="CodeWave Logo" class="logo-img">
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="intro.html" class="nav-link">Введение</a>
+                <a href="languages.html" class="nav-link">Языки</a>
+                <a href="tutorials.html" class="nav-link">Уроки</a>
+                <a href="resources.html" class="nav-link">Ресурсы</a>
+            </nav>
+            <div class="header-buttons" id="headerButtons"></div>
+        </div>
+    </header>
+
+    <main id="content">
+        <section id="languages">
+            <div class="container">
+                <h2>Популярные языки программирования</h2>
+                <div class="languages-grid">
+                    <div class="language-card" id="python">
+                        <div class="card-content">
+                            <h3>Python</h3>
+                            <p>Python — универсальный язык, известный своей простотой и читаемостью. Он идеально подходит для начинающих благодаря понятному синтаксису, а также широко используется в анализе данных, машинном обучении и веб-разработке.</p>
+                            <h4>Ключевые особенности:</h4>
+                            <ul>
+                                <li>Простота изучения и читаемость кода.</li>
+                                <li>Огромное сообщество и множество библиотек (например, Pandas, NumPy, TensorFlow).</li>
+                                <li>Подходит для автоматизации задач, веб-разработки (Django, Flask) и науки о данных.</li>
+                            </ul>
+                            <h4>Популярные курсы:</h4>
+                            <ul>
+                                <li><a href="https://www.coursera.org/learn/python" target="_blank">Введение в Python (Coursera)</a>: Основы языка для начинающих.</li>
+                                <li><a href="https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp/" target="_blank">Python для анализа данных (Udemy)</a>: Работа с данными и визуализация.</li>
+                                <li><a href="https://stepik.org/course/512/syllabus" target="_blank">Автоматизация с Python (Stepik)</a>: Автоматизация повседневных задач.</li>
+                            </ul>
+                            <a href="languages.html#python" class="card-button">Изучить Python</a>
+                        </div>
+                    </div>
+                    <div class="language-card" id="javascript">
+                        <div class="card-content">
+                            <h3>JavaScript</h3>
+                            <p>JavaScript — язык, который оживляет веб-сайты. Он используется для создания интерактивных интерфейсов, веб-приложений и даже серверной разработки (с помощью Node.js).</p>
+                            <h4>Ключевые особенности:</h4>
+                            <ul>
+                                <li>Работает в браузере, добавляя интерактивность (анимации, формы).</li>
+                                <li>Поддерживает асинхронное программирование (Promises, async/await).</li>
+                                <li>Имеет мощные фреймворки, такие как React, Vue и Angular.</li>
+                            </ul>
+                            <h4>Популярные курсы:</h4>
+                            <ul>
+                                <li><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank">Основы JavaScript (freeCodeCamp)</a>: Интерактивное обучение с задачами.</li>
+                                <li><a href="https://www.udemy.com/course/the-complete-javascript-course/" target="_blank">Современный JavaScript (Udemy)</a>: Глубокое погружение в ES6+.</li>
+                                <li><a href="https://www.coursera.org/learn/react-basics" target="_blank">React для начинающих (Coursera)</a>: Создание приложений с React.</li>
+                            </ul>
+                            <a href="languages.html#javascript" class="card-button">Изучить JavaScript</a>
+                        </div>
+                    </div>
+                    <div class="language-card" id="java">
+                        <div class="card-content">
+                            <h3>Java</h3>
+                            <p>Java — мощный и надежный язык, используемый для корпоративных приложений, мобильной разработки (Android) и серверных систем.</p>
+                            <h4>Ключевые особенности:</h4>
+                            <ul>
+                                <li>Платформонезависимость благодаря JVM (Java Virtual Machine).</li>
+                                <li>Объектно-ориентированное программирование с акцентом на масштабируемость.</li>
+                                <li>Широко используется в корпоративной разработке (Spring, Hibernate).</li>
+                            </ul>
+                            <h4>Популярные курсы:</h4>
+                            <ul>
+                                <li><a href="https://www.pluralsight.com/courses/java-fundamentals-core" target="_blank">Основы Java (Pluralsight)</a>: Базовые концепции языка.</li>
+                                <li><a href="https://www.udemy.com/course/android-java-masterclass/" target="_blank">Java для Android (Udemy)</a>: Создание приложений для Android.</li>
+                                <li><a href="https://stepik.org/course/146/syllabus" target="_blank">Алгоритмы и структуры данных на Java (Stepik)</a>: Подготовка к собеседованиям.</li>
+                            </ul>
+                            <a href="languages.html#java" class="card-button">Изучить Java</a>
+                        </div>
+                    </div>
+                    <div class="language-card" id="ruby">
+                        <div class="card-content">
+                            <h3>Ruby</h3>
+                            <p>Ruby — язык с элегантным синтаксисом, ориентированный на простоту и продуктивность. Популярен благодаря фреймворку Ruby on Rails.</p>
+                            <h4>Ключевые особенности:</h4>
+                            <ul>
+                                <li>Читаемый синтаксис, удобный для разработчиков.</li>
+                                <li>Ruby on Rails ускоряет веб-разработку.</li>
+                                <li>Подходит для стартапов и быстрого прототипирования.</li>
+                            </ul>
+                            <h4>Популярные курсы:</h4>
+                            <ul>
+                                <li><a href="https://www.codecademy.com/learn/learn-ruby" target="_blank">Основы Ruby (Codecademy)</a>: Введение в синтаксис языка.</li>
+                                <li><a href="https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/" target="_blank">Ruby on Rails (Udemy)</a>: Создание веб-приложений.</li>
+                                <li><a href="https://www.coursera.org/learn/ruby-on-rails-intro" target="_blank">Программирование на Ruby (Coursera)</a>: Практические проекты.</li>
+                            </ul>
+                            <a href="languages.html#ruby" class="card-button">Изучить Ruby</a>
+                        </div>
+                    </div>
+                    <div class="language-card" id="go">
+                        <div class="card-content">
+                            <h3>Go</h3>
+                            <p>Go (Golang) — язык от Google, разработанный для простоты, надежности и высокой производительности. Используется в облачных системах и микросервисах.</p>
+                            <h4>Ключевые особенности:</h4>
+                            <ul>
+                                <li>Высокая скорость компиляции и выполнения.</li>
+                                <li>Встроенная поддержка конкурентности (goroutines).</li>
+                                <li>Популярен в разработке серверов и DevOps (Kubernetes, Docker).</li>
+                            </ul>
+                            <h4>Популярные курсы:</h4>
+                            <ul>
+                                <li><a href="https://www.udemy.com/course/go-the-complete-developers-guide/" target="_blank">Введение в Go (Udemy)</a>: Основы языка и синтаксис.</li>
+                                <li><a href="https://www.coursera.org/learn/go-programming" target="_blank">Конкурентность в Go (Coursera)</a>: Работа с goroutines.</li>
+                                <li><a href="https://www.pluralsight.com/courses/building-microservices-go" target="_blank">Создание микросервисов на Go (Pluralsight)</a>: Практические проекты.</li>
+                            </ul>
+                            <a href="languages.html#go" class="card-button">Изучить Go</a>
+                        </div>
+                    </div>
+                    <div class="language-card" id="csharp">
+                        <div class="card-content">
+                            <h3>C#</h3>
+                            <p>C# — язык от Microsoft, используемый для разработки приложений, веб-сервисов, игр (с помощью Unity) и корпоративных решений.</p>
+                            <h4>Ключевые особенности:</h4>
+                            <ul>
+                                <li>Сильная типизация и поддержка объектно-ориентированного программирования.</li>
+                                <li>Широко используется в игровой разработке (Unity).</li>
+                                <li>Интеграция с экосистемой Microsoft (.NET).</li>
+                                <li>Поддержка LINQ для работы с данными.</li>
+                                <li>Современные возможности, такие как асинхронное программирование (async/await).</li>
+                            </ul>
+                            <h4>Популярные курсы:</h4>
+                            <ul>
+                                <li><a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank">Основы C# (Microsoft Learn)</a>: Бесплатное обучение от Microsoft.</li>
+                                <li><a href="https://www.udemy.com/course/unitycourse/" target="_blank">Создание игр на Unity (Udemy)</a>: Разработка 2D и 3D игр.</li>
+                                <li><a href="https://www.pluralsight.com/courses/aspnet-core-fundamentals" target="_blank">Веб-разработка на ASP.NET (Pluralsight)</a>: Создание веб-приложений.</li>
+                            </ul>
+                            <a href="languages.html#csharp" class="card-button">Изучить C#</a>
+                        </div>
+                    </div>
+                    <div class="language-card" id="swift">
+                        <div class="card-content">
+                            <h3>Swift</h3>
+                            <p>Swift — язык от Apple для разработки приложений под iOS и macOS. Известен своей скоростью и безопасностью.</p>
+                            <h4>Ключевые особенности:</h4>
+                            <ul>
+                                <li>Оптимизирован для производительности на устройствах Apple.</li>
+                                <li>Безопасный синтаксис, минимизирующий ошибки.</li>
+                                <li>Поддержка SwiftUI для быстрого создания интерфейсов.</li>
+                            </ul>
+                            <h4>Популярные курсы:</h4>
+                            <ul>
+                                <li><a href="https://developer.apple.com/learn/curriculum/" target="_blank">Swift для начинающих (Apple Education)</a>: Официальное руководство.</li>
+                                <li><a href="https://www.udemy.com/course/ios-13-swift-5-the-complete-ios-app-development-bootcamp/" target="_blank">iOS-разработка на Swift (Udemy)</a>: Создание приложений.</li>
+                                <li><a href="https://www.coursera.org/learn/swiftui" target="_blank">SwiftUI Essentials (Coursera)</a>: Современный UI-фреймворк.</li>
+                            </ul>
+                            <a href="languages.html#swift" class="card-button">Изучить Swift</a>
+                        </div>
+                    </div>
+                    <div class="language-card" id="kotlin">
+                        <div class="card-content">
+                            <h3>Kotlin</h3>
+                            <p>Kotlin — современный язык от JetBrains, официально поддерживаемый Google для Android-разработки. Используется также для серверных приложений и веб-разработки.</p>
+                            <h4>Ключевые особенности:</h4>
+                            <ul>
+                                <li>Краткий и безопасный синтаксис, минимизирующий ошибки (например, null safety).</li>
+                                <li>Полная совместимость с Java, что упрощает интеграцию.</li>
+                                <li>Поддержка корутин для асинхронного программирования.</li>
+                                <li>Широко используется в Android-разработке (Android Studio).</li>
+                                <li>Подходит для кроссплатформенной разработки (Kotlin Multiplatform).</li>
+                            </ul>
+                            <h4>Популярные курсы:</h4>
+                            <ul>
+                                <li><a href="https://developer.android.com/courses/android-basics-kotlin/course" target="_blank">Android Development with Kotlin (Google)</a>: Официальный курс для Android.</li>
+                                <li><a href="https://www.udemy.com/course/kotlin-android-developer-masterclass/" target="_blank">Kotlin для начинающих (Udemy)</a>: Основы языка и практика.</li>
+                                <li><a href="https://www.pluralsight.com/courses/kotlin-coroutines-fundamentals" target="_blank">Kotlin Coroutines (Pluralsight)</a>: Асинхронное программирование.</li>
+                            </ul>
+                            <a href="languages.html#kotlin" class="card-button">Изучить Kotlin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-bottom">
+            <p>© 2025 <a href="[invalid url, do not cite] Все права защищены.</p>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" title="Наверх">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

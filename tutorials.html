@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeWave - уроки программирования для начинающих: Python, JavaScript и другие языки. Практические задания и примеры кода.">
+    <meta name="keywords" content="программирование, уроки, Python, JavaScript, для начинающих">
+    <title>Уроки программирования</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="CodeWave Logo" class="logo-img">
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="intro.html" class="nav-link">Введение</a>
+                <a href="languages.html" class="nav-link">Языки</a>
+                <a href="tutorials.html" class="nav-link">Уроки</a>
+                <a href="resources.html" class="nav-link">Ресурсы</a>
+            </nav>
+            <div class="header-buttons" id="headerButtons"></div>
+        </div>
+    </header>
+
+    <main id="content">
+        <section id="tutorials">
+            <div class="container">
+                <h2>Уроки программирования</h2>
+                <button onclick="resetVotes()" class="btn btn-secondary reset-votes-btn">Сбросить голоса</button>
+                <div class="tutorial-item" id="tutorial-py-1">
+                    <h3>Основы данных в Python: Списки и Кортежи</h3>
+                    <p>В этом уроке вы узнаете о списках и кортежах в Python — двух фундаментальных структурах данных.</p>
+                    <h4>Списки</h4>
+                    <p>Списки — это изменяемые коллекции, которые могут содержать элементы разных типов.</p>
+                    <pre><code># Создание списка
+my_list = [1, 2, 3, 4, 5]
+print(my_list)  # Вывод: [1, 2, 3, 4, 5]
+my_list.append(6)
+print(my_list)  # Вывод: [1, 2, 3, 4, 5, 6]</code></pre>
+                    <h4>Кортежи</h4>
+                    <p>Кортежи — это неизменяемые коллекции, которые используются для хранения данных, которые не должны изменяться.</p>
+                    <pre><code># Создание кортежа
+my_tuple = (1, 2, 3)
+print(my_tuple)  # Вывод: (1, 2, 3)
+# my_tuple.append(4)  # Ошибка: кортежи неизменяемы</code></pre>
+                    <div class="tutorial-rating" data-tutorial-id="tutorial-py-1">
+                        <button onclick="vote('like', 'tutorial-py-1')">❤️</button>
+                        <span id="likeCount-tutorial-py-1">0</span>
+                        <button onclick="vote('dislike', 'tutorial-py-1')">💔</button>
+                        <span id="dislikeCount-tutorial-py-1">0</span>
+                    </div>
+                </div>
+                <div class="tutorial-item" id="tutorial-js-1">
+                    <h3>Введение в JavaScript: Переменные</h3>
+                    <p>В этом уроке вы узнаете, как объявлять и использовать переменные в JavaScript.</p>
+                    <h4>Объявление переменных</h4>
+                    <p>В JavaScript есть три способа объявления переменных: <code>var</code>, <code>let</code> и <code>const</code>.</p>
+                    <pre><code>let name = "CodeWave";
+const year = 2025;
+console.log(name);  // Вывод: CodeWave
+console.log(year);  // Вывод: 2025
+name = "CodeWave Updated";
+console.log(name);  // Вывод: CodeWave Updated
+// year = 2026;  // Ошибка: const нельзя изменить</code></pre>
+                    <h4>Использование переменных</h4>
+                    <p>Переменные можно использовать для хранения и манипуляции данными.</p>
+                    <pre><code>let a = 5;
+let b = 10;
+let sum = a + b;
+console.log("Сумма: " + sum);  // Вывод: Сумма: 15</code></pre>
+                    <div class="tutorial-rating" data-tutorial-id="tutorial-js-1">
+                        <button onclick="vote('like', 'tutorial-js-1')">❤️</button>
+                        <span id="likeCount-tutorial-js-1">0</span>
+                        <button onclick="vote('dislike', 'tutorial-js-1')">💔</button>
+                        <span id="dislikeCount-tutorial-js-1">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-bottom">
+            <p>© 2025 <a href="https://github.com/nikitos23133/nikitos23133.github.io">CodeWave</a>. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" title="Наверх">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

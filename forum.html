@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWave - Форум</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Проверка авторизации -->
+    <script>
+        function checkAuth() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+            if (!isAuthenticated) {
+                window.location.href = 'auth.html';
+            }
+        }
+        checkAuth();
+    </script>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="CodeWave Logo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="intro.html">Введение</a>
+                <a href="languages.html">Языки</a>
+                <a href="tutorials.html">Уроки</a>
+                <a href="resources.html">Ресурсы</a>
+                <a href="forum.html">Форум</a>
+                <a href="profile.html">Профиль</a>
+                <a href="#" class="logout" onclick="logout()">Выйти</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="forum">
+            <div class="container">
+                <h2>Форум обсуждений</h2>
+                <div class="forum-topics">
+                    <!-- Сюда будут добавляться темы -->
+                </div>
+                <div class="create-topic">
+                    <h3>Создать новую тему</h3>
+                    <form id="topicForm">
+                        <div class="form-group">
+                            <label for="topicTitle">Заголовок:</label>
+                            <input type="text" id="topicTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="topicContent">Содержание:</label>
+                            <textarea id="topicContent" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Создать тему</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CodeWave. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

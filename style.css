@@ -1,0 +1,590 @@
+/* styles.css */
+
+/* --- Переменные и Базовые стили --- */
+:root {
+    --primary-color: #4a90e2; /* Синий */
+    --secondary-color: #50e3c2; /* Бирюзовый */
+    --dark-color: #333;
+    --light-color: #f8f9fa;
+    --grey-color: #6c757d;
+    --white-color: #fff;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --font-family: 'Arial', sans-serif; /* Замените на свой шрифт */
+    --header-height: 70px;
+    --border-radius: 5px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Для плавной прокрутки по якорям */
+    font-size: 16px; /* Базовый размер шрифта */
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Футер прижимается к низу */
+    overflow-x: hidden; /* Предотвращает горизонтальный скролл из-за анимации */
+    position: relative; /* Для позиционирования .leaves */
+}
+
+main {
+    flex-grow: 1; /* Основной контент занимает все доступное пространство */
+    padding-top: var(--header-height); /* Отступ от фиксированного хедера */
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: darken(var(--primary-color), 10%);
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 0.8em;
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+
+section {
+    padding: 50px 0;
+}
+
+/* --- Утилиты --- */
+.sr-only { /* Для доступности: скрывает элемент визуально, но оставляет для скринридеров */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none !important; /* Убираем подчеркивание у кнопок-ссылок */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary, .btn-hero-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.btn-primary:hover, .btn-hero-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+    color: var(--white-color);
+}
+
+.btn-secondary, .btn-hero-secondary {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+}
+.btn-secondary:hover, .btn-hero-secondary:hover {
+    background-color: darken(var(--secondary-color), 10%);
+    color: var(--dark-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: var(--white-color);
+}
+.btn-danger:hover {
+    background-color: darken(var(--danger-color), 10%);
+    color: var(--white-color);
+}
+
+
+/* --- Шапка (Header) --- */
+header {
+    background-color: var(--white-color);
+    box-shadow: var(--box-shadow);
+    position: fixed; /* Фиксированная шапка */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: var(--header-height);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-img {
+    height: 40px; /* Настройте высоту лого */
+    width: auto;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 20px; /* Пространство между пунктами меню */
+}
+
+.nav-link {
+    color: var(--dark-color);
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+}
+
+.nav-link[aria-current="page"] { /* Стиль для активной ссылки */
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-buttons .btn {
+    padding: 8px 15px;
+}
+
+/* --- Hero секция --- */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-bg.jpg') no-repeat center center/cover; /* Добавьте фоновое изображение */
+    color: var(--white-color);
+    text-align: center;
+    padding: 100px 0;
+    margin-top: -1px; /* Компенсация отступа main */
+}
+
+.hero h1 {
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-buttons .btn {
+    margin: 0 10px;
+}
+
+
+/* --- Сетка карточек (Языки, Ресурсы, Уроки) --- */
+.languages-grid,
+.tutorials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивная сетка */
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.language-card,
+.tutorial-card,
+.card-more {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-card:hover,
+.tutorial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.tutorial-card-image {
+    width: 100%;
+    height: 180px; /* Фиксированная высота для картинок уроков */
+    object-fit: cover; /* Масштабирование с сохранением пропорций */
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1; /* Контент растягивается */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+.card-content h3 a { /* Ссылка внутри заголовка урока */
+     color: inherit;
+     text-decoration: none;
+}
+.card-content h3 a:hover {
+     text-decoration: underline;
+}
+
+
+.card-content h4 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: var(--grey-color);
+}
+
+.card-content ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.card-content li {
+    margin-bottom: 5px;
+}
+
+.card-button {
+    margin-top: auto; /* Прижимает кнопку к низу карточки */
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    align-self: flex-start; /* Кнопка не растягивается на всю ширину */
+    transition: background-color 0.3s ease;
+}
+
+.card-button:hover {
+    background-color: darken(var(--secondary-color), 10%);
+    text-decoration: none;
+}
+
+.tutorial-difficulty {
+    font-size: 0.85rem;
+    color: var(--grey-color);
+    margin-top: 10px;
+}
+
+.card-more { /* Стиль для карточки "Больше..." */
+    background-color: var(--light-color);
+    border: 1px dashed var(--grey-color);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.card-more .card-content {
+    align-items: center;
+}
+
+
+/* --- Страницы Введение, О нас --- */
+#introduction, #about {
+    background-color: var(--white-color);
+}
+#introduction ul, #about ul {
+     list-style: disc;
+     padding-left: 20px;
+     margin-bottom: 1em;
+}
+
+/* --- Формы (Логин, Регистрация, Контакты) --- */
+.login, .contact-section {
+    /* background-color: #eef; Добавьте фон если нужно */
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+.login-container h2 {
+    margin-bottom: 25px;
+}
+
+.login_inputBox {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login_inputBox input[type="text"],
+.login_inputBox input[type="email"],
+.login_inputBox input[type="password"],
+.form-input /* Общий класс для полей контакта */
+ {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.login_inputBox input:focus,
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); /* Подсветка при фокусе */
+}
+
+.login_inputBox button#btn, /* Кнопка входа/регистрации */
+.contact-form button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login_inputBox button#btn:hover,
+.contact-form button[type="submit"]:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+.login_group {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.login_group a {
+    font-weight: bold;
+}
+
+/* Стили для формы контактов */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.contact-section h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+#form-status { /* Сообщение об отправке формы */
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+#form-status.success { color: var(--success-color); }
+#form-status.error { color: var(--danger-color); }
+
+
+/* --- Футер --- */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px; /* Отступ от основного контента */
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.footer-bottom a {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+.footer-bottom a:hover {
+    color: var(--white-color);
+}
+
+/* --- Анимация Листьев (пример) --- */
+.leaves {
+    position: absolute; /* Изменено на absolute для прокрутки */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Позади всего контента */
+    pointer-events: none; /* Не мешает кликам */
+}
+
+.leaves .set {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.leaves .set div {
+    position: absolute;
+    display: block;
+    background: url('images/leaf.png') no-repeat; /* Добавьте картинку листика */
+    background-size: contain;
+    width: 20px; /* Размер листика */
+    height: 20px;
+    opacity: 0;
+    animation: fall 10s linear infinite; /* Анимация падения */
+}
+
+/* Разные задержки и позиции для разных листиков */
+.leaves .set div:nth-child(1) { left: 20%; animation-delay: -1s; }
+.leaves .set div:nth-child(2) { left: 50%; animation-delay: -5s; transform: scale(0.8) rotate(15deg); }
+.leaves .set div:nth-child(3) { left: 70%; animation-delay: -3s; transform: scale(1.2); }
+.leaves .set div:nth-child(4) { left: 10%; animation-delay: -8s; transform: scale(0.9) rotate(-10deg); }
+.leaves .set div:nth-child(5) { left: 85%; animation-delay: -6s; }
+.leaves .set div:nth-child(6) { left: 90%; animation-delay: -2s; transform: scale(0.7) rotate(25deg); }
+.leaves .set div:nth-child(7) { left: 40%; animation-delay: -9s; transform: scale(1.1); }
+.leaves .set div:nth-child(8) { left: 60%; animation-delay: -4s; transform: scale(0.8) rotate(-5deg); }
+
+@keyframes fall {
+    0% {
+        top: -10%;
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+    20% {
+        transform: translateX(-10px) rotate(45deg); /* Движение влево и поворот */
+    }
+     40% {
+        transform: translateX(10px) rotate(90deg); /* Движение вправо и поворот */
+    }
+     60% {
+        transform: translateX(-10px) rotate(135deg);
+    }
+     80% {
+        transform: translateX(10px) rotate(180deg);
+    }
+    100% {
+        top: 110%; /* Улетает за пределы экрана */
+        opacity: 0.5;
+        transform: translateX(0) rotate(225deg);
+    }
+}
+
+
+/* --- Адаптивность --- */
+@media (max-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    .languages-grid, .tutorials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+    .header-container {
+        flex-direction: column; /* Шапка: элементы друг под другом (упрощенно) */
+        height: auto;
+        padding: 10px 0;
+    }
+    header {
+        position: static; /* Убираем фиксацию на малых экранах */
+        height: auto;
+    }
+    main {
+        padding-top: 0; /* Убираем отступ */
+    }
+    .nav-menu ul {
+        flex-direction: column; /* Меню: пункты друг под другом */
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .header-buttons {
+        margin-top: 10px;
+    }
+    .hero {
+        padding: 60px 0;
+    }
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1.1rem; }
+    .languages-grid, .tutorials-grid {
+        grid-template-columns: 1fr; /* Одна карточка в ряду */
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+     h1 { font-size: 1.8rem; }
+     h2 { font-size: 1.5rem; }
+     .hero-buttons .btn {
+         display: block; /* Кнопки на всю ширину */
+         margin: 10px 0;
+     }
+     .login-container, .contact-form {
+         padding: 20px;
+     }
+}
